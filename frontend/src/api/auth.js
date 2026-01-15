@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/auth";
+const BASE_URL = "https://auth-app-m6or.onrender.com/";
 
 export const registerUser = async (userData) => {
   const response = await fetch(`${BASE_URL}/register`, {

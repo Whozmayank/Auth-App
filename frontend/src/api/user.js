@@ -1,6 +1,6 @@
 import { getAuthHeader } from "../utils/auth";
 
-const BASE_URL = "http://localhost:3000"; // backend port
+const BASE_URL = "https://auth-app-m6or.onrender.com/"; // backend port
 
 export const getAllUsers = async () => {
   const res = await fetch(`${BASE_URL}/user`, {

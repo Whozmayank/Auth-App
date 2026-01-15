@@ -18,7 +18,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const response = await fetch('http://localhost:3000/user/profile', {
+            const response = await fetch('https://auth-app-m6or.onrender.com/user/profile', {
                 headers: {
                     ...getAuthHeader()
                 }
