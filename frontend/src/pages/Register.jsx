@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../api/auth.js";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
@@ -15,12 +16,19 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await registerUser(formData);
+        try {
+            const res = await registerUser(formData);
 
-        alert("Registration successful!");
-        navigate("/login");
+            console.log("REGISTER RESPONSE:", res);
 
+            alert("Registration successful!");
+            navigate("/login");
+        } catch (error) {
+            console.error("REGISTER ERROR:", error);
+            alert("Registration failed. Check console.");
+        }
     };
+
 
     const handleChange = (e) => {
         setFormData({
@@ -85,8 +93,9 @@ const Register = () => {
                     </form>
 
                     <p className="register-footer">
-                        Already have an account? <a href="/login" className="login-link">Login</a>
+                        Already have an account? <Link to="/login" className="login-link">Login</Link>
                     </p>
+
                 </div>
             </div>
         </>

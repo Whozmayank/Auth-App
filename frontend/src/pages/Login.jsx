@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { loginUser } from "../api/auth.js";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import "./Login.css";
 
 const Login = () => {
@@ -13,17 +15,24 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await loginUser(formData);
-        console.log("LOGIN RESPONSE 👉", response);
 
-        if (response.token) {
-            localStorage.setItem("authToken", response.token);
-            alert("Login successful!");
-            navigate("/profile");
-        } else {
-            alert(response.error || "Invalid credentials");
+        try {
+            const response = await loginUser(formData);
+            console.log("LOGIN RESPONSE 👉", response);
+
+            if (response.token) {
+                localStorage.setItem("authToken", response.token);
+                alert("Login successful!");
+                navigate("/profile");
+            } else {
+                alert(response.error || "Invalid credentials");
+            }
+        } catch (error) {
+            console.error("LOGIN ERROR:", error);
+            alert("Login failed. Check console.");
         }
-    }
+    };
+
 
     const handleChange = (e) => {
         setFormData({
@@ -71,8 +80,9 @@ const Login = () => {
                 </form>
 
                 <p className="login-footer">
-                    Don't have an account? <a href="/register" className="signup-link">Sign up</a>
+                    Don't have an account? <Link to="/register" className="signup-link">Sign up</Link>
                 </p>
+
             </div>
         </div>
     </>
