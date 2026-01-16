@@ -1,4 +1,4 @@
-const BASE_URL = "https://auth-app-m6or.onrender.com";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export const registerUser = async (userData) => {
   const response = await fetch(`${BASE_URL}/auth/register`, {
