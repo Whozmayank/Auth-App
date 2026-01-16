@@ -8,6 +8,9 @@ export const registerUser = async (userData) => {
     },
     body: JSON.stringify(userData),
   });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
   return response.json();
 };
 
@@ -19,5 +22,8 @@ export const loginUser = async (userData) => {
     },
     body: JSON.stringify(userData),
   });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
   return response.json();
 };
