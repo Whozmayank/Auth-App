@@ -11,7 +11,7 @@ const Profile = () => {
         const token = localStorage.getItem("authToken");
 
         if (!token) {
-            navigate("/login");
+            navigate("/auth/login");
             return;
         }
     }, []);
@@ -26,7 +26,7 @@ const Profile = () => {
 
             if (response.status !== 200) {
                 localStorage.removeItem("authToken");
-                navigate("/login");
+                navigate("/auth/login");
                 return;
             }
 

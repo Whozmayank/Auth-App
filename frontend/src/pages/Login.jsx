@@ -23,7 +23,7 @@ const Login = () => {
             if (response.token) {
                 localStorage.setItem("authToken", response.token);
                 alert("Login successful!");
-                navigate("/profile");
+                navigate("/user/profile");
             } else {
                 alert(response.error || "Invalid credentials");
             }
@@ -80,7 +80,7 @@ const Login = () => {
                 </form>
 
                 <p className="login-footer">
-                    Don't have an account? <Link to="/register" className="signup-link">Sign up</Link>
+                    Don't have an account? <Link to="/auth/register" className="signup-link">Sign up</Link>
                 </p>
 
             </div>
