@@ -33,7 +33,7 @@ const Users = () => {
         try {
             await deleteUser(id); // ✅ success only
             setUsers((prev) => prev.filter((u) => u._id !== id));
-            navigate("/auth/login");
+            navigate("/login");
         } catch (error) {
             // ✅ STOP UI change
             if (error.response?.status === 403) {

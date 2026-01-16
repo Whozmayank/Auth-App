@@ -22,7 +22,7 @@ const Register = () => {
             console.log("REGISTER RESPONSE:", res);
 
             alert("Registration successful!");
-            navigate("/auth/login");
+            navigate("/login");
         } catch (error) {
             console.error("REGISTER ERROR:", error);
             alert("Registration failed. Check console.");
@@ -93,7 +93,7 @@ const Register = () => {
                     </form>
 
                     <p className="register-footer">
-                        Already have an account? <Link to="/auth/login" className="login-link">Login</Link>
+                        Already have an account? <Link to="/login" className="login-link">Login</Link>
                     </p>
 
                 </div>

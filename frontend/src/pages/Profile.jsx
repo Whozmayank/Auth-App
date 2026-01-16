@@ -11,14 +11,15 @@ const Profile = () => {
         const token = localStorage.getItem("authToken");
 
         if (!token) {
-            navigate("/auth/login");
+            navigate("/login");
             return;
         }
     }, []);
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const response = await fetch('https://auth-app-m6or.onrender.com/user/profile', {
+            const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+            const response = await fetch(`${BASE_URL}/user/profile`, {
                 headers: {
                     ...getAuthHeader()
                 }
@@ -26,7 +27,7 @@ const Profile = () => {
 
             if (response.status !== 200) {
                 localStorage.removeItem("authToken");
-                navigate("/auth/login");
+                navigate("/login");
                 return;
             }
 
