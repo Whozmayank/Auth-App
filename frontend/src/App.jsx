@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, } from 'react-router-dom';
+import { HashRouter, Routes, Route, } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
@@ -7,7 +7,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -23,7 +23,7 @@ const App = () => {
             <Users />
           </ProtectedRoute>} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
